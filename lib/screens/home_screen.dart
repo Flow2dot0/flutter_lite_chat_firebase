@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
             // don't inherit from [Theme]
             RoundedButton(
+                animation: _curvedAnimation,
                 label: 'Log In',
                 color: Colors.blueAccent.shade100,
                 onPressed: () {
@@ -89,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen>
               height: 20.0,
             ),
             RoundedButton(
+                animation: _curvedAnimation,
                 label: 'Register',
                 color: Colors.blueAccent.shade700,
                 onPressed: () {}),

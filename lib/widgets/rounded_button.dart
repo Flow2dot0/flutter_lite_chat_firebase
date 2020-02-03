@@ -20,7 +20,7 @@ class RoundedButton extends StatelessWidget {
       elevation: 5.0,
       constraints: BoxConstraints.tightFor(
         height: 50.0,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width * (animation?.value ?? 1),
       ),
       onPressed: onPressed,
       fillColor: color,
