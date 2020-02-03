@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lite_chat_firebase/ux/animations.dart';
 import 'package:flutter_lite_chat_firebase/widgets/rounded_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'login_screen.dart';
 
@@ -63,9 +64,11 @@ class _HomeScreenState extends State<HomeScreen>
                     height: 150.0 * _curvedAnimation.value,
                   ),
                 ),
-                Text(
-                  'Lite Chat'.toUpperCase(),
-                  style: GoogleFonts.teko(
+                TypewriterAnimatedTextKit(
+                  speed: Duration(milliseconds: 90),
+                  totalRepeatCount: 2,
+                  text: ['Lite Chat'.toUpperCase()],
+                  textStyle: GoogleFonts.teko(
                     textStyle: TextStyle(
                         fontSize: 50.0,
                         color: Colors.blueAccent,
