@@ -1,32 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lite_chat_firebase/ux/animations.dart';
 import 'package:flutter_lite_chat_firebase/widgets/rounded_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'login_screen.dart';
+
 class HomeScreen extends StatefulWidget {
+  static const String routeName = '/';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, Animations {
+  AnimationController _animationController;
+  Animation _backgroundColorTween;
+  Animation _curvedAnimation;
+
+  @override
+  void initState() {
+    _animationController = createAnimationController(
+        tickerProvider: this, duration: Duration(seconds: 1));
+    _backgroundColorTween = colorTween(
+        parent: _animationController,
+        beginColor: Colors.blueAccent,
+        endColor: Colors.white);
+    _curvedAnimation =
+        curvedAnimation(parent: _animationController, curve: Curves.decelerate);
+    _animationController.forward();
+    _animationController.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _backgroundColorTween.value,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  child: Image.asset(
-                    'images/logo.jpg',
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset(
+                      'images/logo.png',
+                    ),
+                    height: 150.0 * _curvedAnimation.value,
                   ),
-                  height: 150.0,
                 ),
                 Text(
                   'Lite Chat'.toUpperCase(),
@@ -47,7 +82,9 @@ class _HomeScreenState extends State<HomeScreen>
             RoundedButton(
                 label: 'Log In',
                 color: Colors.blueAccent.shade100,
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.routeName);
+                }),
             SizedBox(
               height: 20.0,
             ),
