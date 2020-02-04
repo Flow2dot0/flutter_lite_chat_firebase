@@ -19,7 +19,7 @@ class RoundedButton extends StatelessWidget {
     return RawMaterialButton(
       elevation: 5.0,
       constraints: BoxConstraints.tightFor(
-        height: 50.0,
+        height: 55.0,
         width: MediaQuery.of(context).size.width * (animation?.value ?? 1),
       ),
       onPressed: onPressed,

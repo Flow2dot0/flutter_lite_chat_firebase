@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lite_chat_firebase/screens/register_screen.dart';
 import 'package:flutter_lite_chat_firebase/ux/animations.dart';
 import 'package:flutter_lite_chat_firebase/widgets/rounded_button.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -104,7 +105,9 @@ class _HomeScreenState extends State<HomeScreen>
                 animation: _curvedAnimation,
                 label: 'Register',
                 color: Colors.blueAccent.shade700,
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, RegisterScreen.routeName);
+                }),
           ],
         ),
       ),
