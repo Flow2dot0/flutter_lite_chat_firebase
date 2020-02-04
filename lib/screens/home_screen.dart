@@ -15,21 +15,28 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin, Animations {
+  // init animations
   AnimationController _animationController;
   Animation _backgroundColorTween;
   Animation _curvedAnimation;
 
   @override
   void initState() {
+    // required : add mixin [SingleTickerProviderStateMixin] and [Animations]
+    // get a controller
+    // add [TickerProvider] this
     _animationController = createAnimationController(
         tickerProvider: this, duration: Duration(seconds: 1));
+    // choose animation
     _backgroundColorTween = colorTween(
         parent: _animationController,
         beginColor: Colors.blueAccent,
         endColor: Colors.white);
     _curvedAnimation =
         curvedAnimation(parent: _animationController, curve: Curves.decelerate);
+    // run animation
     _animationController.forward();
+    // update ui
     _animationController.addListener(() {
       setState(() {});
     });
@@ -39,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void dispose() {
+    // close the animation
     _animationController.dispose();
     super.dispose();
   }
