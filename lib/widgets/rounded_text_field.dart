@@ -6,11 +6,13 @@ class RoundedTextField extends StatelessWidget {
   final Function onChanged;
   final Color color1;
   final Color color2;
+  final bool obscureText;
 
   const RoundedTextField(
       {Key key,
       this.keyboard = TextInputType.emailAddress,
       this.hintText = 'Write something',
+      this.obscureText = false,
       @required this.onChanged,
       this.color1,
       this.color2})
@@ -19,6 +21,7 @@ class RoundedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: obscureText,
       onChanged: onChanged,
       keyboardType: keyboard,
       decoration: InputDecoration(
