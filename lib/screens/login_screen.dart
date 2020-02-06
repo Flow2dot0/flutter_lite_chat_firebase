@@ -15,12 +15,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String email;
   String password;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -72,7 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     .then((FirebaseUser user) =>
                         Navigator.pushNamed(context, ChatScreen.routeName))
                     .catchError((e) {
-                  SnackBarPage();
+                  _scaffoldKey.currentState.showSnackBar(SnackBar(
+                    content: Text('Assign a GlobalKey to the Scaffold'),
+                    duration: Duration(seconds: 3),
+                  ));
+
+                  // Find the Scaffold in the widget tree and use
+                  // it to show a SnackBar.
                 });
               },
               color: Colors.blueAccent.shade100,
@@ -87,12 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
 class SnackBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final snackBar = SnackBar(
-      content: Text('Yay! A SnackBar!'),
-    );
-    Scaffold.of(context).showSnackBar(snackBar);
+    final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
 
-    return snackBar;
+// Find the Scaffold in the widget tree and use it to show a SnackBar.
+    Scaffold.of(context).showSnackBar(snackBar);
     // Find the Scaffold in the widget tree and use
     // it to show a SnackBar.
   }
