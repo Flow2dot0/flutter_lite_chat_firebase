@@ -53,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             RoundedTextField(
               obscureText: true,
+              keyboard: TextInputType.text,
               color1: Colors.blueAccent.shade100,
               color2: Colors.blueAccent.shade700,
               hintText: 'Enter your password',
