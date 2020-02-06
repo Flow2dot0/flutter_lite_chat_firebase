@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:935629037225:android:bd346bdbf1772bb574d3b8",
+        "mobilesdk_app_id": "1:935629037225:android:2e695568682fba7774d3b8",
         "android_client_info": {
-          "package_name": "com.flow2dot0.flutter_lite_chat_firebase"
+          "package_name": "co.flow2dot0.flutter_lite_chat_firebase"
         }
       },
       "oauth_client": [

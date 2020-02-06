@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen>
                   text: ['Lite Chat'.toUpperCase()],
                   textStyle: GoogleFonts.teko(
                     textStyle: TextStyle(
-                        fontSize: 50.0,
+                        fontSize: 48.0,
                         color: Colors.blueAccent,
                         fontWeight: FontWeight.bold,
                         fontStyle: FontStyle.italic),

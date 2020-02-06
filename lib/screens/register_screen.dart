@@ -26,13 +26,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Hero(
-              tag: 'logo',
-              child: Container(
-                child: Image.asset(
-                  'images/logo.png',
+            Flexible(
+              child: Hero(
+                tag: 'logo',
+                child: Container(
+                  child: Image.asset(
+                    'images/logo.png',
+                  ),
+                  height: 400.0,
                 ),
-                height: 400.0,
               ),
             ),
             // TODO : continue...
@@ -66,6 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               label: 'Register !',
               onPressed: () async {
                 MyFirebase fbInstance = MyFirebase();
+                fbInstance.initAuth();
                 await fbInstance
                     .registerUser(emailStr: email, password: password)
                     .then((FirebaseUser user) =>
