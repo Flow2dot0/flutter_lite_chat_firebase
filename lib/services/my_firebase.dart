@@ -20,12 +20,16 @@ class MyFirebase {
     return user;
   }
 
-  Future<FirebaseUser> signIn(
+  Future<FirebaseUser> logIn(
       {@required String email, @required String password}) async {
     final FirebaseUser user = (await _auth.signInWithEmailAndPassword(
             email: email, password: password))
         .user;
     return user;
+  }
+
+  void logOut() {
+    _auth.signOut();
   }
 
   Future<FirebaseUser> getCurrentUser() async {
