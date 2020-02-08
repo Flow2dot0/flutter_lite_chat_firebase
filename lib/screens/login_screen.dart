@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lite_chat_firebase/screens/chat_screen.dart';
@@ -72,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 label: 'Go !',
                 onPressed: () async {
                   MyFirebase fbInstance = MyFirebase();
-                  fbInstance.initAuth();
                   setState(() {
                     isLoading = true;
                   });

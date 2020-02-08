@@ -3,14 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyFirebase {
-  FirebaseAuth _auth;
-  Firestore _firestore;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   MyFirebase();
-
-  void initAuth() {
-    _auth = FirebaseAuth.instance;
-  }
 
   Future<FirebaseUser> registerUser(
       {String emailStr, @required String password}) async {
@@ -37,14 +32,19 @@ class MyFirebase {
     return user;
   }
 
-  void initStore() {
-    _firestore = Firestore.instance;
-  }
-
-  Future<Stream<QuerySnapshot>> getAllMessages() async {
-    return Firestore.instance
+  Stream<QuerySnapshot> getAllMessages() {
+    Stream<QuerySnapshot> query = Firestore.instance
         .collection('discussion_iphone_v_android')
         .orderBy('datetime')
         .snapshots();
+    return query;
+  }
+
+  void addMessage({@required String text, @required String sender}) {
+    Firestore.instance.collection('discussion_iphone_v_android').add({
+      'text': text,
+      'sender': sender,
+      'datetime': DateTime.now(),
+    });
   }
 }

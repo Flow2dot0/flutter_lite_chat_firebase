@@ -69,7 +69,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               label: 'Register !',
               onPressed: () async {
                 MyFirebase fbInstance = MyFirebase();
-                fbInstance.initAuth();
                 await fbInstance
                     .registerUser(emailStr: email, password: password)
                     .then((FirebaseUser user) =>
